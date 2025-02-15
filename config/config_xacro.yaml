@@ -1,0 +1,80 @@
+spotdog:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  
+  # 10 0.01 1
+  fr_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_fr_upper_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  br_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_br_upper_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  
+  fl_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_fl_upper_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  bl_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_bl_upper_hip
+    pid: {p: 10, i: 0.01, d: 1}
+
+  fr_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_fr_upper_knee
+    pid: {p: 10, i: 0.01, d: 1}
+  br_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_br_upper_knee
+    pid: {p: 10, i: 0.01, d: 1}
+  
+  fl_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_fl_upper_knee
+    pid: {p: 10, i: 0.01, d: 1}
+  bl_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_to_bl_upper_knee
+    pid: {p: 10, i: 0.01, d: 1}
+
+  #test control
+  fr_upper_to_lower_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: FR_upper_hip_to_lower_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  fr_upper_to_lower_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: FR_upper_knee_to_lower_knee
+    pid: {p: 10, i: 0.01, d: 1}
+
+  br_upper_to_lower_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: BR_upper_hip_to_lower_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  br_upper_to_lower_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: BR_upper_knee_to_lower_knee
+    pid: {p: 10, i: 0.01, d: 1}
+  
+  fl_upper_to_lower_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: FL_upper_hip_to_lower_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  fl_upper_to_lower_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: FL_upper_knee_to_lower_knee
+    pid: {p: 10, i: 0.01, d: 1}
+  
+  bl_upper_to_lower_hip_controller:
+    type: effort_controllers/JointPositionController
+    joint: BL_upper_hip_to_lower_hip
+    pid: {p: 10, i: 0.01, d: 1}
+  bl_upper_to_lower_knee_controller:
+    type: effort_controllers/JointPositionController
+    joint: BL_upper_knee_to_lower_knee
+    pid: {p: 10, i: 0.01, d: 1}
+  
+  
