@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="use_sim_time" default="true"/>
+    <rosparam command="load" file="$(find spotdog)/config/controllers.yaml"/>
+    
+    <!-- Khởi động controller_manager -->
+    <node pkg="controller_manager" type="controller_manager" name="controller_manager" output="screen"/>
+
+    <!-- Khởi động controller_spawner với các controller cần thiết -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+          args="joint_state_controller
+                fr_hip_controller br_hip_controller
+                fl_hip_controller bl_hip_controller
+                " 
+          output="screen"/>
+    
+    <!-- Khởi động RViz với cấu hình có sẵn -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find spotdog)/rviz/rviz.rviz" />
+
+</launch>

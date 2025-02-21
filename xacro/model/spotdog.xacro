@@ -6,13 +6,13 @@
     <xacro:include filename="$(find spotdog)/xacro/transmission/transmission.xacro"/>
 
     <xacro:base_link name="BASE"/>
-
+<!-- 
     <link name="dummy_link"/>
     <joint name="base_to_dummy_link" type="fixed">
         <parent link="dummy_link"/>
         <child link="BASE"/>
         <origin xyz="0.0 0.0 1" rpy="0.0 0.0 0.0"/>
-    </joint>
+    </joint> -->
 
     <!-- <link name="world"/>
     <joint name="world_to_base" type="fixed">
@@ -88,29 +88,29 @@
         
     </gazebo>
 
-    <xacro:transmission name="FR_hip_trans" joint_name="base_to_fr_upper_hip" actuator_name="trans_1"/>
-    <xacro:transmission name="BR_hip_trans" joint_name="base_to_br_upper_hip" actuator_name="trans_2"/>
-    <xacro:transmission name="FL_hip_trans" joint_name="base_to_fl_upper_hip" actuator_name="trans_3"/>
-    <xacro:transmission name="BL_hip_trans" joint_name="base_to_bl_upper_hip" actuator_name="trans_4"/>
+    <xacro:transmissionEffortJoint name="FR_hip_trans" joint_name="base_to_fr_upper_hip" actuator_name="trans_1"/>
+    <xacro:transmissionEffortJoint name="BR_hip_trans" joint_name="base_to_br_upper_hip" actuator_name="trans_2"/>
+    <xacro:transmissionEffortJoint name="FL_hip_trans" joint_name="base_to_fl_upper_hip" actuator_name="trans_3"/>
+    <xacro:transmissionEffortJoint name="BL_hip_trans" joint_name="base_to_bl_upper_hip" actuator_name="trans_4"/>
 
-    <xacro:transmission name="FR_knee_trans" joint_name="base_to_fr_upper_knee" actuator_name="trans_5"/>
-    <xacro:transmission name="BR_knee_trans" joint_name="base_to_br_upper_knee" actuator_name="trans_6"/>
-    <xacro:transmission name="FL_knee_trans" joint_name="base_to_fl_upper_knee" actuator_name="trans_7"/>
-    <xacro:transmission name="BL_knee_trans" joint_name="base_to_bl_upper_knee" actuator_name="trans_8"/>
+    <xacro:transmissionPassiveJoint name="FR_knee_trans" joint_name="base_to_fr_upper_knee" actuator_name="trans_5"/>
+    <xacro:transmissionPassiveJoint name="BR_knee_trans" joint_name="base_to_br_upper_knee" actuator_name="trans_6"/>
+    <xacro:transmissionPassiveJoint name="FL_knee_trans" joint_name="base_to_fl_upper_knee" actuator_name="trans_7"/>
+    <xacro:transmissionPassiveJoint name="BL_knee_trans" joint_name="base_to_bl_upper_knee" actuator_name="trans_8"/>
 
-    <xacro:transmission name="FR_upper_hip_to_lower_hip_trans" joint_name="FR_upper_hip_to_lower_hip" actuator_name="trans_9"/>
-    <xacro:transmission name="BR_upper_hip_to_lower_hip_trans" joint_name="BR_upper_hip_to_lower_hip" actuator_name="trans_10"/>
-    <xacro:transmission name="FL_upper_hip_to_lower_hip_trans" joint_name="FL_upper_hip_to_lower_hip" actuator_name="trans_11"/>
-    <xacro:transmission name="BL_upper_hip_to_lower_hip_trans" joint_name="BL_upper_hip_to_lower_hip" actuator_name="trans_12"/>
+    <xacro:transmissionPassiveJoint name="FR_upper_hip_to_lower_hip_trans" joint_name="FR_upper_hip_to_lower_hip" actuator_name="trans_9"/>
+    <xacro:transmissionPassiveJoint name="BR_upper_hip_to_lower_hip_trans" joint_name="BR_upper_hip_to_lower_hip" actuator_name="trans_10"/>
+    <xacro:transmissionPassiveJoint name="FL_upper_hip_to_lower_hip_trans" joint_name="FL_upper_hip_to_lower_hip" actuator_name="trans_11"/>
+    <xacro:transmissionPassiveJoint name="BL_upper_hip_to_lower_hip_trans" joint_name="BL_upper_hip_to_lower_hip" actuator_name="trans_12"/>
 
-    <xacro:transmission name="FR_upper_knee_to_lower_knee_trans" joint_name="FR_upper_knee_to_lower_knee" actuator_name="trans_13"/>
-    <xacro:transmission name="BR_upper_knee_to_lower_knee_trans" joint_name="BR_upper_knee_to_lower_knee" actuator_name="trans_14"/>
-    <xacro:transmission name="FL_upper_knee_to_lower_knee_trans" joint_name="FL_upper_knee_to_lower_knee" actuator_name="trans_15"/>
-    <xacro:transmission name="BL_upper_knee_to_lower_knee_trans" joint_name="BL_upper_knee_to_lower_knee" actuator_name="trans_16"/>
+    <xacro:transmissionPassiveJoint name="FR_upper_knee_to_lower_knee_trans" joint_name="FR_upper_knee_to_lower_knee" actuator_name="trans_13"/>
+    <xacro:transmissionPassiveJoint name="BR_upper_knee_to_lower_knee_trans" joint_name="BR_upper_knee_to_lower_knee" actuator_name="trans_14"/>
+    <xacro:transmissionPassiveJoint name="FL_upper_knee_to_lower_knee_trans" joint_name="FL_upper_knee_to_lower_knee" actuator_name="trans_15"/>
+    <xacro:transmissionPassiveJoint name="BL_upper_knee_to_lower_knee_trans" joint_name="BL_upper_knee_to_lower_knee" actuator_name="trans_16"/>
 
     <gazebo>
         <plugin name='gazebo_ros_control' filename= 'libgazebo_ros_control.so'>
-          <robotNamespace>/spotdog</robotNamespace>
+          <robotNamespace>/</robotNamespace>
           <robotSimType>gazebo_ros_control/ClosedLoopHWSim</robotSimType>
         </plugin>
       </gazebo>

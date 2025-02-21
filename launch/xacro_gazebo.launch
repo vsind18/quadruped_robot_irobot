@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="paused" default="true"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    
+    
+    
+    
+
+    <!-- Include the Gazebo empty world launch file -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        
+    </include>
+
+    <!-- Load the robot description -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find spotdog)/xacro/model/spotdog.xacro"/>
+
+    <!-- Spawn the model in Gazebo -->
+    <node name="spawn_model" 
+      pkg="gazebo_ros" 
+      type="spawn_model" 
+      args="-param robot_description -urdf -z 0.255 -model spotdog" 
+      output="screen"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+
+
+    <node name="static_tf_publisher" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0.255 0 0 0 odom BASE" />
+    
+    <node name="static_tf_publisher_base_to_fr_upper_hip" pkg="tf2_ros" type="static_transform_publisher" args="0.19911 -0.1735 0.0074919 0 0 0 BASE FR_upper_hip" />
+    <node name="static_tf_publisher_base_to_br_upper_hip" pkg="tf2_ros" type="static_transform_publisher" args="-0.246888764816864 -0.173500351164099 0.00749192202338655 0 0 0 BASE BR_upper_hip" />
+    <node name="static_tf_publisher_base_to_fl_upper_hip" pkg="tf2_ros" type="static_transform_publisher" args="0.199111235183205 0.173499648835901 0.00749192202384069 0 0 0 BASE FL_upper_hip" />
+    <node name="static_tf_publisher_base_to_bl_upper_hip" pkg="tf2_ros" type="static_transform_publisher" args="-0.24689 0.1735 0.0074919 0 0 0 BASE BL_upper_hip" />
+
+    <node name="static_tf_publisher_base_to_fr_upper_knee" pkg="tf2_ros" type="static_transform_publisher" args="0.24911 -0.1735 0.0074919 0 0 0 BASE FR_upper_knee" />
+    <node name="static_tf_publisher_base_to_br_upper_knee" pkg="tf2_ros" type="static_transform_publisher" args="-0.19689 -0.1735 0.0074919 0 0 0 BASE BR_upper_knee" />
+    <node name="static_tf_publisher_base_to_fl_upper_knee" pkg="tf2_ros" type="static_transform_publisher" args="0.249111235183415 0.173499648835901 0.0074919220240201 0 0 0 BASE FL_upper_knee" />
+    <node name="static_tf_publisher_base_to_bl_upper_knee" pkg="tf2_ros" type="static_transform_publisher" args="-0.196888764816585 0.173499648835901 0.00749192202401999 0 0 0 BASE BL_upper_knee" />
+
+    <node name="static_tf_publisher_fr_upper_hip_to_lower_hip" pkg="tf2_ros" type="static_transform_publisher" args="-0.1035 -0.01 -0.037247 0 0 0 FR_upper_hip FR_lower_hip" />
+    <node name="static_tf_publisher_br_upper_hip_to_lower_hip" pkg="tf2_ros" type="static_transform_publisher" args="-0.103499423252635 -0.0100000000000007 -0.0372541190514647 0 0 0 BR_upper_hip BR_lower_hip" />
+    <node name="static_tf_publisher_fl_upper_hip_to_lower_hip" pkg="tf2_ros" type="static_transform_publisher" args="-0.103501820756454 0.0100000000000031 -0.0372474576318325 0 0 0 FL_upper_hip FL_lower_hip" />
+    <node name="static_tf_publisher_bl_upper_hip_to_lower_hip" pkg="tf2_ros" type="static_transform_publisher" args="-0.1035 0.01 -0.037254 0 0 0 BL_upper_hip BL_lower_hip" />
+
+    <node name="static_tf_publisher_fr_upper_knee_to_lower_knee" pkg="tf2_ros" type="static_transform_publisher" args="0.080087 -0.008 -0.075406 0 0 0 FR_upper_knee FR_lower_knee" />
+    <node name="static_tf_publisher_br_upper_knee_to_lower_knee" pkg="tf2_ros" type="static_transform_publisher" args="0.080084 -0.008 -0.075409 0 0 0 BR_upper_knee BR_lower_knee" />
+    <node name="static_tf_publisher_fl_upper_knee_to_lower_knee" pkg="tf2_ros" type="static_transform_publisher" args="0.0800874913210537 0.00799999999999891 -0.0754055285368097 0 0 0 FL_upper_knee FL_lower_knee" />
+    <node name="static_tf_publisher_bl_upper_knee_to_lower_knee" pkg="tf2_ros" type="static_transform_publisher" args="0.080084 0.008 -0.075409 0 0 0 BL_upper_knee BL_lower_knee" />
+
+
+
+</launch>
